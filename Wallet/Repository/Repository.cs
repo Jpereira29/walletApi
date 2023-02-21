@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using WalletApi.Context;
 
 namespace WalletApi.Repository
@@ -27,7 +28,7 @@ namespace WalletApi.Repository
             return _context.Set<T>().AsNoTracking();
         }
 
-        public async Task<T> GetByCode(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public async Task<T> GetByCode(Expression<Func<T, bool>> predicate)
         {
             return await _context.Set<T>().SingleOrDefaultAsync(predicate);
         }

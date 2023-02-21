@@ -28,6 +28,17 @@ namespace WalletApi.Controllers
             return await _uof.WalletRepository.Get().ToListAsync();
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<ICollection>> GetAsyncByCode(int id)
+        {
+            var wallet = await _uof.WalletRepository.GetWalletWithOperation(p => p.WalletId == id);
+            if (wallet == null)
+            {
+                return BadRequest("Carteira não encontrada!");
+            }
+            return Ok(wallet);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Wallet>> PostAsync(Wallet wallet)
         {

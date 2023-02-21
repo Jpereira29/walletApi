@@ -21,7 +21,6 @@ namespace WalletApi.Models
         [StringLength(40)]
         public string? Description { get; set; }
 
-        [JsonIgnore]
         public DateTime Date { get; set; }
 
         public int WalletId { get; set; }

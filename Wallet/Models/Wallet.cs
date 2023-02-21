@@ -18,7 +18,6 @@ namespace WalletApi.Models
         [Column(TypeName = "decimal(10,2)")]
         public decimal Value { get; set; }
 
-        [JsonIgnore]
         public ICollection<Operation>? Operations { get; set; }
     }
 }
