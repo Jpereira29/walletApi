@@ -46,6 +46,19 @@ namespace WalletApi.Controllers
             {
                 _uof.WalletRepository.Add(wallet);
                 await _uof.Commit();
+
+                if (wallet.Value > 0)
+                {
+                    _uof.OperationRepository.Add(new Operation
+                    {
+                        Value = wallet.Value,
+                        Description = "Valor inicial",
+                        Date = DateTime.Now,
+                        Type = Enums.OperationType.Deposit,
+                        WalletId = wallet.WalletId,
+                    });
+                    await _uof.Commit();
+                }
                 return Ok(wallet);
             }
             catch (Exception e)

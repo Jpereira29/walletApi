@@ -15,7 +15,7 @@ namespace WalletApi.Repository
 
         public async Task<Wallet> GetWalletWithOperation(Expression<Func<Wallet, bool>> predicate)
         {
-            return await Get().Include(p => p.Operations).FirstOrDefaultAsync(predicate);
+            return await Get().Include(p => p.Operations.OrderByDescending(p => p.Date)).FirstOrDefaultAsync(predicate);
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection.Emit;
 using System.Text.Json.Serialization;
+using WalletApi.Enums;
 
 namespace WalletApi.Models
 {
@@ -16,13 +16,14 @@ namespace WalletApi.Models
         public decimal Value { get; set; }
 
         [Required]
-        public OperandType Type { get; set; }
+        public OperationType Type { get; set; }
 
         [StringLength(40)]
         public string? Description { get; set; }
 
         public DateTime Date { get; set; }
 
+        [Required]
         public int WalletId { get; set; }
 
         [JsonIgnore]
