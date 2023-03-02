@@ -5,6 +5,7 @@
 <ul>
   <li>.NET</li>
   <li>C#</li>
+  <li>Entity Framework Core</li>
   <li>MySQL</li>
   <li>Identity</li>
 </ul>
